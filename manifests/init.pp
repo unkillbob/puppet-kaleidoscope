@@ -10,6 +10,8 @@ class kaleidoscope (
 ) {
 
   if $enable_cli {
+    require boxen::config
+
     file { "${boxen::config::bindir}/ksdiff":
       ensure  => link,
       target  => '/Applications/Kaleidoscope.app/Contents/Resources/bin/ksdiff',
@@ -19,7 +21,7 @@ class kaleidoscope (
   }
 
   if $make_default {
-    include git
+    require git::config
 
     # Set diff tool
     git::config::global { 'difftool "Kaleidoscope".cmd':
