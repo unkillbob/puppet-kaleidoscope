@@ -25,7 +25,7 @@ class kaleidoscope (
 
     # Set diff tool
     git::config::global { 'difftool "Kaleidoscope".cmd':
-      value => 'ksdiff --partial-changeset --relative-path "$MERGED" -- "$LOCAL" "$REMOTE"',
+      value => 'ksdiff --partial-changeset --relative-path "\$MERGED" -- "\$LOCAL" "\$REMOTE"',
     }
     git::config::global { 'diff.tool':
       value => 'Kaleidoscope',
@@ -33,7 +33,7 @@ class kaleidoscope (
 
     # Set merge tool
     git::config::global { 'mergetool "Kaleidoscope".cmd':
-      value => 'ksdiff --merge --output "$MERGED" --base "$BASE" -- "$LOCAL" --snapshot "$REMOTE" --snapshot',
+      value => 'ksdiff --merge --output "\$MERGED" --base "\$BASE" -- "\$LOCAL" --snapshot "\$REMOTE" --snapshot',
     }
     git::config::global { 'mergetool "Kaleidoscope".trustExitCode':
       value => true,
