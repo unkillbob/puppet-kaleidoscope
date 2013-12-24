@@ -13,7 +13,7 @@ class kaleidoscope (
     file { "${boxen::config::bindir}/ksdiff":
       ensure  => link,
       target  => '/Applications/Kaleidoscope.app/Contents/Resources/bin/ksdiff',
-      mode    => 0755,
+      mode    => '0755',
       require => Package['Kaleidoscope'],
     }
   }
@@ -34,9 +34,9 @@ class kaleidoscope (
       value => 'ksdiff --merge --output "$MERGED" --base "$BASE" -- "$LOCAL" --snapshot "$REMOTE" --snapshot',
     }
     git::config::global { 'mergetool "Kaleidoscope".trustExitCode':
-      value => 'true',
+      value => true,
     }
-    git::config::global { "merge.tool":
+    git::config::global { 'merge.tool':
       value => 'Kaleidoscope',
     }
   }
